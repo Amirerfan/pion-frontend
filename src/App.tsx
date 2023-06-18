@@ -5,6 +5,9 @@ import Actions from './pages/Actions';
 
 import Navbar from './components/Common/Navbar.tsx';
 
+import store from './state';
+import { Provider } from 'react-redux';
+
 import { ActionsProvider } from './contexts/Actions/ActionsContext.tsx';
 import { UpgradeActionProvider } from './contexts/UpgradeAction/UpgradeActionContext.tsx';
 import { MergeActionProvider } from './contexts/MergeAction/MergeActionContext.tsx';
@@ -20,32 +23,37 @@ import { UserProfileProvider } from './contexts/UserProfile/UserProfileContext.t
 function App() {
   return (
     <div className="app">
-      <Web3Provider>
-        <UserProfileProvider>
-          <ActionsProvider>
-            <UpgradeActionProvider>
-              <MergeActionProvider>
-                <SplitActionProvider>
-                  <TransferActionProvider>
-                    <ClaimPrizeProvider>
-                      <BrowserRouter>
-                        <Navbar />
-                        <Routes>
-                          <Route path="/" element={<Home />} />
-                          <Route path="/create" element={<Actions />} />
-                          <Route path="/get-started" element={<GetStarted />} />
-                          <Route path="/claim" element={<ClaimPrize />} />
-                          <Route path="/review" element={<ReviewDetail />} />
-                        </Routes>
-                      </BrowserRouter>
-                    </ClaimPrizeProvider>
-                  </TransferActionProvider>
-                </SplitActionProvider>
-              </MergeActionProvider>
-            </UpgradeActionProvider>
-          </ActionsProvider>
-        </UserProfileProvider>
-      </Web3Provider>
+      <Provider store={store}>
+        <Web3Provider>
+          <UserProfileProvider>
+            <ActionsProvider>
+              <UpgradeActionProvider>
+                <MergeActionProvider>
+                  <SplitActionProvider>
+                    <TransferActionProvider>
+                      <ClaimPrizeProvider>
+                        <BrowserRouter>
+                          <Navbar />
+                          <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/create" element={<Actions />} />
+                            <Route
+                              path="/get-started"
+                              element={<GetStarted />}
+                            />
+                            <Route path="/claim" element={<ClaimPrize />} />
+                            <Route path="/review" element={<ReviewDetail />} />
+                          </Routes>
+                        </BrowserRouter>
+                      </ClaimPrizeProvider>
+                    </TransferActionProvider>
+                  </SplitActionProvider>
+                </MergeActionProvider>
+              </UpgradeActionProvider>
+            </ActionsProvider>
+          </UserProfileProvider>
+        </Web3Provider>
+      </Provider>
     </div>
   );
 }

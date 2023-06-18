@@ -4,8 +4,6 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import useUserProfile from '../../contexts/UserProfile/useUserProfile.ts';
 
 const Navbar = () => {
-  const { isConnected } = useUserProfile();
-
   return (
     <>
       <DesktopNavbar />
@@ -15,6 +13,8 @@ const Navbar = () => {
 };
 
 const DesktopNavbar = () => {
+  const { isConnected } = useUserProfile();
+
   return (
     <FadeIn delay={0.3}>
       <div className="hidden md:flex navbar justify-between items-center py-9 pl-14 pr-12">
