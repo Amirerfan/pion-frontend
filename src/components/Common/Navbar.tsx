@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FadeIn } from '../../animations';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import usePION from '../../contexts/PION/usePION.ts';
 import useUserProfile from '../../contexts/UserProfile/useUserProfile.ts';
 
 const Navbar = () => {
@@ -14,6 +15,7 @@ const Navbar = () => {
 
 const DesktopNavbar = () => {
   const { isConnected } = useUserProfile();
+  const { PIONBalance } = usePION();
 
   return (
     <FadeIn delay={0.3}>
@@ -32,9 +34,10 @@ const DesktopNavbar = () => {
             <button className="btn btn--small">Create BonPION</button>
           </Link>
           <button className="btn btn--small">Buy PION</button>
-          {isConnected && (
+          {isConnected && PIONBalance && (
             <button className="btn btn--small btn--dark-primary">
-              Balance: <strong className="ml-2 mr-1">2310.013</strong>
+              Balance:{' '}
+              <strong className="ml-2 mr-1">{PIONBalance.toString()}</strong>
               <strong className="text-xyz-75">PION</strong>
             </button>
           )}

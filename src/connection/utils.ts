@@ -1,5 +1,10 @@
 import { Connector } from '@web3-react/types';
-import { ConnectionType, gnosisSafeConnection, injectedConnection, networkConnection } from 'connection';
+import {
+  ConnectionType,
+  gnosisSafeConnection,
+  injectedConnection,
+  networkConnection,
+} from '../connection';
 
 const CONNECTIONS = [
   gnosisSafeConnection,
@@ -9,7 +14,9 @@ const CONNECTIONS = [
 
 export function getConnection(c: Connector | ConnectionType) {
   if (c instanceof Connector) {
-    const connection = CONNECTIONS.find((connection) => connection.connector === c);
+    const connection = CONNECTIONS.find(
+      (connection) => connection.connector === c,
+    );
     if (!connection) {
       throw Error('unsupported connector');
     }
@@ -26,7 +33,10 @@ export function getConnection(c: Connector | ConnectionType) {
   }
 }
 
-export function getConnectionName(connectionType: ConnectionType, isMetaMask?: boolean) {
+export function getConnectionName(
+  connectionType: ConnectionType,
+  isMetaMask?: boolean,
+) {
   switch (connectionType) {
     case ConnectionType.INJECTED:
       return isMetaMask ? 'MetaMask' : 'Injected';

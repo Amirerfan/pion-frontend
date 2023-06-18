@@ -887,6 +887,22 @@
     "@safe-global/safe-apps-sdk" "7.9.0"
     events "^3.3.0"
 
+"@safe-global/safe-apps-provider@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@safe-global/safe-apps-provider/-/safe-apps-provider-0.16.0.tgz#55cb8ef168900fa13d4f4508a99ef00b565bf55d"
+  integrity sha512-oeRlvU+2hjFx/7EbskGq30kkwL2hyfdseZZZYf6na/xD85mZ59zKO81lBxZcWnvofJFqjqtScz84PAKth9Sq2g==
+  dependencies:
+    "@safe-global/safe-apps-sdk" "7.10.0"
+    events "^3.3.0"
+
+"@safe-global/safe-apps-sdk@7.10.0":
+  version "7.10.0"
+  resolved "https://registry.yarnpkg.com/@safe-global/safe-apps-sdk/-/safe-apps-sdk-7.10.0.tgz#e75fc581126f27c52ec2601da51bca5eb99b61f4"
+  integrity sha512-is0QAHVoGkP06YfOPcp4X3/YUEA3wRdgFUyKZ4rT47uOEnzxA9Sm8BFJrIZqZOjjqC+aJXRMF0cE2qucS953rg==
+  dependencies:
+    "@safe-global/safe-gateway-typescript-sdk" "^3.5.3"
+    ethers "^5.7.2"
+
 "@safe-global/safe-apps-sdk@7.9.0":
   version "7.9.0"
   resolved "https://registry.yarnpkg.com/@safe-global/safe-apps-sdk/-/safe-apps-sdk-7.9.0.tgz#0c79a7760470bfdaf4cce9aa5bceef56898c7037"
@@ -895,7 +911,7 @@
     "@safe-global/safe-gateway-typescript-sdk" "^3.5.3"
     ethers "^5.7.2"
 
-"@safe-global/safe-apps-sdk@^7.9.0":
+"@safe-global/safe-apps-sdk@^7.10.0", "@safe-global/safe-apps-sdk@^7.9.0":
   version "7.11.0"
   resolved "https://registry.yarnpkg.com/@safe-global/safe-apps-sdk/-/safe-apps-sdk-7.11.0.tgz#2cbc164fb70141cdf4d3331ff222cd98a2529316"
   integrity sha512-RDamzPM1Lhhiiz0O+Dn6FkFqIh47jmZX+HCV/BBnBBOSKfBJE//IGD3+02zMgojXHTikQAburdPes9qmH1SA1A==
@@ -2027,6 +2043,15 @@
   integrity sha512-gUOuaeOaf5brx3Qi38vPShajOsnBPXeZBDbMNBEIaWmXf5RYYcwLnjdmauLTfRcvja+8FszPuMCs2GLNQOdEag==
   dependencies:
     "@web3-react/types" "^8.0.12-beta.0"
+
+"@web3-react/gnosis-safe@^8.0.6-beta.0":
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@web3-react/gnosis-safe/-/gnosis-safe-8.2.0.tgz#003e7f5b335751b6699152be301256c989631b51"
+  integrity sha512-52Z1uHcnIVsyfEPjj2C+cDF21wNCMrCT6kr1JTFXkvLMfZ3LvfWOX1j+C9lOBGUyZRBe5ZtkjiLiogGqRqZYmA==
+  dependencies:
+    "@safe-global/safe-apps-provider" "^0.16.0"
+    "@safe-global/safe-apps-sdk" "^7.10.0"
+    "@web3-react/types" "^8.2.0"
 
 "@web3-react/metamask@^8.0.28-beta.0":
   version "8.2.1"

@@ -2,13 +2,16 @@ import { TransactionResponse } from '@ethersproject/providers';
 import { Token } from '@uniswap/sdk-core';
 import { useWeb3React } from '@web3-react/core';
 import { useCallback, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from 'state/hooks';
+import { useAppDispatch, useAppSelector } from '../hooks.ts';
 
 import { addTransaction } from './reducer';
 import { TransactionDetails, TransactionInfo, TransactionType } from './types';
 
 // helper that can take a ethers library transaction response and add it to the list of transactions
-export function useTransactionAdder(): (response: TransactionResponse, info: TransactionInfo) => void {
+export function useTransactionAdder(): (
+  response: TransactionResponse,
+  info: TransactionInfo,
+) => void {
   const { chainId, account } = useWeb3React();
   const dispatch = useAppDispatch();
 
@@ -36,7 +39,9 @@ export function useAllTransactions(): { [txHash: string]: TransactionDetails } {
   return chainId ? state[chainId] ?? {} : {};
 }
 
-export function useTransaction(transactionHash?: string): TransactionDetails | undefined {
+export function useTransaction(
+  transactionHash?: string,
+): TransactionDetails | undefined {
   const allTransactions = useAllTransactions();
 
   if (!transactionHash) {
@@ -71,7 +76,10 @@ export function isTransactionRecent(tx: TransactionDetails): boolean {
 }
 
 // returns whether a token has a pending approval transaction
-export function useHasPendingApproval(token?: Token, spender?: string): boolean {
+export function useHasPendingApproval(
+  token?: Token,
+  spender?: string,
+): boolean {
   const allTransactions = useAllTransactions();
   return useMemo(
     () =>
@@ -84,7 +92,11 @@ export function useHasPendingApproval(token?: Token, spender?: string): boolean 
           return false;
         } else {
           if (tx.info.type !== TransactionType.APPROVAL) return false;
-          return tx.info.spender === spender && tx.info.tokenAddress === token.address && isTransactionRecent(tx);
+          return (
+            tx.info.spender === spender &&
+            tx.info.tokenAddress === token.address &&
+            isTransactionRecent(tx)
+          );
         }
       }),
     [allTransactions, spender, token?.address],

@@ -19,6 +19,7 @@ export enum TransactionType {
   REWARD,
   CLAIM_FEE,
   MINT,
+  BALANCE_OF,
 }
 
 export interface BaseTransactionInfo {
@@ -30,6 +31,10 @@ export interface ApproveTransactionInfo extends BaseTransactionInfo {
   tokenAddress: string;
   tokenSymbol?: string;
   spender: string;
+}
+
+export interface PIONBalanceOfTransactionInfo extends BaseTransactionInfo {
+  type: TransactionType.BALANCE_OF;
 }
 
 export interface RegisterTransactionInfo extends BaseTransactionInfo {
@@ -54,7 +59,8 @@ export type TransactionInfo =
   | RegisterTransactionInfo
   | TestSwapTransactionInfo
   | ClaimFeeTransactionInfo
-  | MintTransactionInfo;
+  | MintTransactionInfo
+  | PIONBalanceOfTransactionInfo;
 
 export interface TransactionDetails {
   hash: string;

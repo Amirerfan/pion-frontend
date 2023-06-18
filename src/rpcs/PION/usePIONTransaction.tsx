@@ -38,6 +38,7 @@ export default function usePIONTransaction(
     if (!provider || !account || !chainId) {
       return { callback: null };
     }
+    console.log('provider, account, chainId: ', provider);
     return {
       callback: async function onDibs(): Promise<TransactionResponse> {
         const estimatedCalls: CallEstimate[] = await Promise.all(
@@ -149,10 +150,10 @@ export default function usePIONTransaction(
               throw new Error(`Transaction rejected`);
             } else {
               // otherwise, the error was unexpected and we need to convey that
-              console.error(`TokenTap Transaction failed`);
+              console.error(`PION Transaction failed`);
 
               throw new Error(
-                `TokenTap Transaction failed: ${
+                `PION Transaction failed: ${
                   error.reason ?? error.message ?? ''
                 }`,
               );
